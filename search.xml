@@ -4,6 +4,31 @@
   
     
     <entry>
+      <title>CISCN华中赛区线下 Crypto</title>
+      <link href="/2023/06/25/CISCN%E5%8D%8E%E4%B8%AD%E8%B5%9B%E5%8C%BA%E7%BA%BF%E4%B8%8BCTF%20Crypto/"/>
+      <url>/2023/06/25/CISCN%E5%8D%8E%E4%B8%AD%E8%B5%9B%E5%8C%BA%E7%BA%BF%E4%B8%8BCTF%20Crypto/</url>
+      
+        <content type="html"><![CDATA[<h1 id="CISCN华中赛区线下CTF-Crypto"><a href="#CISCN华中赛区线下CTF-Crypto" class="headerlink" title="CISCN华中赛区线下CTF Crypto"></a>CISCN华中赛区线下CTF Crypto</h1><h2 id="题目1忘记叫啥了，早上的"><a href="#题目1忘记叫啥了，早上的" class="headerlink" title="题目1忘记叫啥了，早上的"></a>题目1<del>忘记叫啥了，早上的</del></h2><p>三个部分</p><p>1.简单的推导</p><script type="math/tex; mode=display">m_1,c_1=m_1^e\mod n\\m_2,c_2=m_2^e\mod n\\m_3,c_3=m_3^e\mod n\\e=50bits</script><script type="math/tex; mode=display">隐藏条件:m_1^2=m_2;m_1^3=m_3\\n=gcd(c_1^2-c_2,c_1^3-c_3)\\然后内置函数求解离散对数，还挺快</script><p>2.多项式上的离散对数问题</p><p>了解过多项式RSA应该知道多项式的阶是分解多项式N，得到每个因子的degree</p><script type="math/tex; mode=display">phi=(mod^{d_1}-1)*(mod*{d_2}-1)*...\\很显然这个阶找一些小素数还是很简单的\\接下来就利用Pohlig–Hellman</script><p>3.矩阵离散对数求解</p><p>懒得写咯，跟之前的一样<a href="https://lem0us.github.io/2023/05/25/2023%E9%97%BD%E7%9B%BE%E6%9D%AF%E7%BA%BF%E4%B8%8A%E5%88%9D%E8%B5%9B/">看这里闽盾杯的高职组题</a></p><h2 id="题目2"><a href="#题目2" class="headerlink" title="题目2"></a>题目2</h2><p>先是一个简单的RSA推导</p><script type="math/tex; mode=display">s=(p^q+q^p)\mod n\\p^q\mod n=p\\\left\{\begin{aligned}p^q\mod p & =0\\p^q\mod q & =p\\\end{aligned}\right. \\crt([0,p],[p,q])==p\\s=p+q</script><p>然后是一个常规格密码解背包问题，背包密度很显然符合格密码求解条件</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> Crypto </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> CTF </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>SYC安洵杯2023 Alexei needs help again</title>
       <link href="/2023/06/12/SYC%E5%AE%89%E6%B4%B5%E6%9D%AF2023%20Alexei%20needs%20help%20again/"/>
       <url>/2023/06/12/SYC%E5%AE%89%E6%B4%B5%E6%9D%AF2023%20Alexei%20needs%20help%20again/</url>
