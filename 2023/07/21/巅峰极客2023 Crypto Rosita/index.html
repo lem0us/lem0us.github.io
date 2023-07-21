@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="CISCN华中赛区线下 Crypto, lem0us">
+    <meta name="keywords" content="巅峰极客2023 Crypto Rosita, lem0us">
     <meta name="description" content="Citric acid dissolves in alcohol">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>CISCN华中赛区线下 Crypto | lem0us</title>
+    <title>巅峰极客2023 Crypto Rosita | lem0us</title>
     <link rel="icon" type="image/png" href="/medias/logo.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -160,12 +160,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/8.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">CISCN华中赛区线下 Crypto</h1>
+                    <h1 class="description center-align post-title">巅峰极客2023 Crypto Rosita</h1>
                 </div>
             </div>
         </div>
@@ -306,28 +306,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-06-25
+                    2023-07-21
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-06-27
+                    2023-07-21
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    265
+                    941
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    1 分
+                    4 分
                 </div>
                 
 
@@ -350,34 +350,134 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="CISCN华中赛区线下CTF-Crypto"><a href="#CISCN华中赛区线下CTF-Crypto" class="headerlink" title="CISCN华中赛区线下CTF Crypto"></a>CISCN华中赛区线下CTF Crypto</h1><h2 id="题目1忘记叫啥了，早上的"><a href="#题目1忘记叫啥了，早上的" class="headerlink" title="题目1忘记叫啥了，早上的"></a>题目1<del>忘记叫啥了，早上的</del></h2><p>三个部分</p>
-<p>1.简单的推导</p>
-<script type="math/tex; mode=display">
-m_1,c_1=m_1^e\mod n\\
-m_2,c_2=m_2^e\mod n\\
-m_3,c_3=m_3^e\mod n\\
-e=50bits</script><script type="math/tex; mode=display">
-隐藏条件:m_1^2=m_2;m_1^3=m_3\\
-n=gcd(c_1^2-c_2,c_1^3-c_3)\\
-然后内置函数求解离散对数，还挺快</script><p>2.多项式上的离散对数问题</p>
-<p>了解过多项式RSA应该知道多项式的阶是分解多项式N，得到每个因子的degree</p>
-<script type="math/tex; mode=display">
-phi=(mod^{d_1}-1)*(mod*{d_2}-1)*...\\
-很显然这个阶找一些小素数还是很简单的\\
-接下来就利用Pohlig–Hellman</script><p>3.矩阵离散对数求解</p>
-<p>懒得写咯，跟之前的一样<a target="_blank" rel="noopener" href="https://lem0us.github.io/2023/05/25/2023%E9%97%BD%E7%9B%BE%E6%9D%AF%E7%BA%BF%E4%B8%8A%E5%88%9D%E8%B5%9B/">看这里闽盾杯的高职组题</a></p>
-<h2 id="题目2"><a href="#题目2" class="headerlink" title="题目2"></a>题目2</h2><p>先是一个简单的RSA推导</p>
-<script type="math/tex; mode=display">
-s=(p^q+q^p)\mod n\\
-p^q\mod n=p\\
-\left\{
-\begin{aligned}
-p^q\mod p & =0\\
-p^q\mod q & =p\\
+                <h1 id="巅峰极客2023-Crypto-Rosita"><a href="#巅峰极客2023-Crypto-Rosita" class="headerlink" title="巅峰极客2023 Crypto Rosita"></a>巅峰极客2023 Crypto Rosita</h1><p><del>偷偷更新应该没人发现吧</del></p>
+<p>浅浅的记录一下。</p>
+<p>跟强网杯2022 Lattice 这个有很大的相似之处。这个折磨我好久所以看着太熟悉了</p>
+<p>可惜我太久没做ECC，忘记了smart attack <del>可恶</del></p>
+<h2 id="题目代码"><a href="#题目代码" class="headerlink" title="题目代码"></a>题目代码</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> Crypto<span class="token punctuation">.</span>Util<span class="token punctuation">.</span>number <span class="token keyword">import</span> bytes_to_long
+<span class="token keyword">from</span> hashlib <span class="token keyword">import</span> sha256
+<span class="token keyword">from</span> os <span class="token keyword">import</span> urandom
+<span class="token comment"># from secret import p, a, b, flag</span>
+p<span class="token operator">=</span>getPrime<span class="token punctuation">(</span><span class="token number">512</span><span class="token punctuation">)</span>
+flag<span class="token operator">=</span><span class="token string">b'flag&#123;??????????????&#125;'</span>
+a<span class="token operator">=</span>randint<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span>p<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
+b<span class="token operator">=</span>randint<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span>p<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
+ECC <span class="token operator">=</span> EllipticCurve<span class="token punctuation">(</span>GF<span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>a<span class="token punctuation">,</span> b<span class="token punctuation">]</span><span class="token punctuation">)</span>
+R<span class="token punctuation">,</span> E<span class="token punctuation">,</span> C <span class="token operator">=</span> <span class="token punctuation">[</span>ECC<span class="token punctuation">.</span>random_point<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">for</span> _ <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
+M<span class="token operator">=</span>Matrix<span class="token punctuation">(</span>ZZ<span class="token punctuation">,</span><span class="token builtin">len</span><span class="token punctuation">(</span>flag<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span>
+pad <span class="token operator">=</span> <span class="token keyword">lambda</span> m<span class="token punctuation">:</span> urandom<span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">)</span> <span class="token operator">+</span> m <span class="token operator">+</span> <span class="token string">b'\x00'</span> <span class="token operator">*</span> <span class="token punctuation">(</span>ZZ<span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token punctuation">.</span>nbits<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">//</span> <span class="token number">8</span> <span class="token operator">-</span> <span class="token builtin">len</span><span class="token punctuation">(</span>m<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">8</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
+out <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>flag<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    m <span class="token operator">=</span> pad<span class="token punctuation">(</span><span class="token builtin">chr</span><span class="token punctuation">(</span>flag<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
+    nonce <span class="token operator">=</span> urandom<span class="token punctuation">(</span><span class="token number">16</span><span class="token punctuation">)</span>
+    sh <span class="token operator">=</span> sha256<span class="token punctuation">(</span>nonce <span class="token operator">+</span> m<span class="token punctuation">)</span><span class="token punctuation">.</span>digest<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    Q <span class="token operator">=</span> b2l<span class="token punctuation">(</span>m<span class="token punctuation">)</span><span class="token operator">*</span>R <span class="token operator">+</span> b2l<span class="token punctuation">(</span>nonce<span class="token punctuation">)</span><span class="token operator">*</span>E <span class="token operator">+</span> b2l<span class="token punctuation">(</span>sh<span class="token punctuation">)</span><span class="token operator">*</span>C
+    out<span class="token punctuation">.</span>append<span class="token punctuation">(</span>Q<span class="token punctuation">)</span>
 
-\end{aligned}\right. \\
-crt([0,p],[p,q])==p\\
-s=p+q</script><p>然后是一个常规格密码解背包问题，背包密度很显然符合格密码求解条件</p>
+<span class="token keyword">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">'out.tuo'</span><span class="token punctuation">,</span> <span class="token string">'w'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span>
+    f<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token builtin">str</span><span class="token punctuation">(</span>out<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>简短的题目</p>
+<h2 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a>题目分析</h2><p>很明显pad那部分后面全是0</p>
+<p>所以$pad(m)<em>R=m</em>2^?<em>R==m</em>R^`$</p>
+<p>转成矩阵表达咯</p>
+<script type="math/tex; mode=display">
+\begin{pmatrix}
+m_{0,0}&m_{0,1}&m_{0,2}\\
+\vdots&&\vdots\\
+m_{72,0}&m_{72,1}&m_{72,2}
+\end{pmatrix}\times \begin{pmatrix}R\\E\\C\end{pmatrix}=
+\begin{pmatrix}Q_1\\\vdots\\Q_{72}\end{pmatrix}</script><p>只给出了$Q_i$,还有就是M矩阵的第一列元素均为2^9*8^小bits</p>
+<p>利用smart attack把离散对数问题变成可解</p>
+<script type="math/tex; mode=display">
+\begin{pmatrix}Q_1\\\vdots\\Q_{72}\end{pmatrix}=\begin{pmatrix}d_1\\\vdots\\d_{72}\end{pmatrix}*G</script><p>$d_i$是生成元G与$Q_i$的离散对数解</p>
+<p>所以现在我们的问题换成了</p>
+<script type="math/tex; mode=display">
+\begin{pmatrix}
+m_{0,0}&m_{0,1}&m_{0,2}\\
+\vdots&&\vdots\\
+m_{72,0}&m_{72,1}&m_{72,2}
+\end{pmatrix}\times \begin{pmatrix}R\\E\\C\end{pmatrix}=\begin{pmatrix}d_1\\\vdots\\d_{72}\end{pmatrix}*G</script><script type="math/tex; mode=display">
+M=\begin{pmatrix}
+m_{0,0}&m_{0,1}&m_{0,2}\\
+\vdots&&\vdots\\
+m_{72,0}&m_{72,1}&m_{72,2}
+\end{pmatrix}\\
+D=\begin{pmatrix}d_1\\\vdots\\d_{72}\end{pmatrix}</script><h2 id="求解正交格"><a href="#求解正交格" class="headerlink" title="求解正交格"></a>求解正交格</h2><script type="math/tex; mode=display">
+假设存在一个与D正交的矩阵R=Matrix(73,73)\\
+R*D=\begin{pmatrix}0\\\vdots\\0\end{pmatrix}\\
+那么R*M=\begin{pmatrix}
+0&0&0\\
+\vdots&&\vdots\\
+0&0&0
+\end{pmatrix}</script><p>找到矩阵R，构建矩阵，<del>这里求正交格就这样造的</del></p>
+<script type="math/tex; mode=display">
+\begin{pmatrix}E&D\\&p\end{pmatrix}</script><p>格基规约后,理想情况最后一列D均被规约成0</p>
+<script type="math/tex; mode=display">
+\begin{pmatrix}R&0\\&p\end{pmatrix}</script><p>但是不一定能把所有行都能规约成正交矩阵R。这题73行，有70行被规约成与D正交</p>
+<p>看强网杯2022 Lattice的wp这里这样满足n&gt;m/2就能通过右核矩阵还原出M。其中n是规约后正交的行数，m为给出的数据行数</p>
+<p>所以对于得到的70行足够还原出小向量。</p>
+<h2 id="还原M"><a href="#还原M" class="headerlink" title="还原M"></a>还原M</h2><script type="math/tex; mode=display">
+R*M=\begin{pmatrix}
+0&0&0\\
+\vdots&&\vdots\\
+0&0&0
+\end{pmatrix}</script><p>所以M的每一列是矩阵R的右核解，我们要求的M的第一列是R的右核格上。</p>
+<p>格基规约后的每行正交性是不变的。且M的第一列是短向量，期望对R求右核矩阵然后规约即可还原出M的第一列。</p>
+<p>exp</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> Crypto<span class="token punctuation">.</span>Util<span class="token punctuation">.</span>number <span class="token keyword">import</span> <span class="token operator">*</span>
+p<span class="token operator">=</span><span class="token number">11093300438765357787693823122068501933326829181518693650897090781749379503427651954028543076247583697669597230934286751428880673539155279232304301123931419</span>
+a<span class="token operator">=</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">10602337004611841904759335148883359090969653658510510358600275641050380448768874133472466281757169086931942865127222834826842856583448958195404187194601748</span><span class="token punctuation">)</span><span class="token operator">%</span>p
+b<span class="token operator">=</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">3424757783971572799257324035329262490411658894172572005012994558801041224262349740588482997105623017991071214586261721870544696496442896621106306121614953</span><span class="token punctuation">)</span><span class="token operator">%</span>p
+<span class="token keyword">def</span> <span class="token function">smart_attack</span><span class="token punctuation">(</span>P<span class="token punctuation">,</span> G<span class="token punctuation">,</span> p<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token comment"># https://crypto.stackexchange.com/a/70508</span>
+    E <span class="token operator">=</span> G<span class="token punctuation">.</span>curve<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    Eqp <span class="token operator">=</span> EllipticCurve<span class="token punctuation">(</span>Qp<span class="token punctuation">(</span>p<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>ZZ<span class="token punctuation">(</span>t<span class="token punctuation">)</span> <span class="token operator">+</span> randint<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> p<span class="token punctuation">)</span> <span class="token operator">*</span> p <span class="token keyword">for</span> t <span class="token keyword">in</span> E<span class="token punctuation">.</span>a_invariants<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+
+    P_Qps <span class="token operator">=</span> Eqp<span class="token punctuation">.</span>lift_x<span class="token punctuation">(</span>ZZ<span class="token punctuation">(</span>G<span class="token punctuation">.</span>xy<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token builtin">all</span><span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+    <span class="token keyword">for</span> P_Qp <span class="token keyword">in</span> P_Qps<span class="token punctuation">:</span>
+        <span class="token keyword">if</span> GF<span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token punctuation">(</span>P_Qp<span class="token punctuation">.</span>xy<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">==</span> G<span class="token punctuation">.</span>xy<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+            <span class="token keyword">break</span>
+
+    Q_Qps <span class="token operator">=</span> Eqp<span class="token punctuation">.</span>lift_x<span class="token punctuation">(</span>ZZ<span class="token punctuation">(</span>P<span class="token punctuation">.</span>xy<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token builtin">all</span><span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
+    <span class="token keyword">for</span> Q_Qp <span class="token keyword">in</span> Q_Qps<span class="token punctuation">:</span>
+        <span class="token keyword">if</span> GF<span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token punctuation">(</span>Q_Qp<span class="token punctuation">.</span>xy<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">==</span> P<span class="token punctuation">.</span>xy<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
+            <span class="token keyword">break</span>
+
+    p_times_P <span class="token operator">=</span> p <span class="token operator">*</span> P_Qp
+    p_times_Q <span class="token operator">=</span> p <span class="token operator">*</span> Q_Qp
+
+    x_P<span class="token punctuation">,</span> y_P <span class="token operator">=</span> p_times_P<span class="token punctuation">.</span>xy<span class="token punctuation">(</span><span class="token punctuation">)</span>
+    x_Q<span class="token punctuation">,</span> y_Q <span class="token operator">=</span> p_times_Q<span class="token punctuation">.</span>xy<span class="token punctuation">(</span><span class="token punctuation">)</span>
+
+    phi_P <span class="token operator">=</span> <span class="token operator">-</span><span class="token punctuation">(</span>x_P <span class="token operator">/</span> y_P<span class="token punctuation">)</span>
+    phi_Q <span class="token operator">=</span> <span class="token operator">-</span><span class="token punctuation">(</span>x_Q <span class="token operator">/</span> y_Q<span class="token punctuation">)</span>
+    k <span class="token operator">=</span> phi_Q <span class="token operator">/</span> phi_P
+    <span class="token keyword">return</span> ZZ<span class="token punctuation">(</span>k<span class="token punctuation">)</span>
+E <span class="token operator">=</span> EllipticCurve<span class="token punctuation">(</span>GF<span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>a<span class="token punctuation">,</span> b<span class="token punctuation">]</span><span class="token punctuation">)</span>
+D<span class="token operator">=</span><span class="token punctuation">[</span><span class="token punctuation">]</span>
+G<span class="token operator">=</span>E<span class="token punctuation">.</span>gens<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    temp_Q<span class="token operator">=</span>E<span class="token punctuation">(</span>res<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span>res<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+    D<span class="token punctuation">.</span>append<span class="token punctuation">(</span>smart_attack<span class="token punctuation">(</span>temp_Q<span class="token punctuation">,</span>G<span class="token punctuation">,</span>p<span class="token punctuation">)</span><span class="token punctuation">)</span>
+<span class="token comment">#有亿点点久</span>
+
+M<span class="token operator">=</span>Matrix<span class="token punctuation">(</span>ZZ<span class="token punctuation">,</span><span class="token number">74</span><span class="token punctuation">,</span><span class="token number">74</span><span class="token punctuation">)</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">73</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
+    M<span class="token punctuation">[</span>i<span class="token punctuation">,</span>i<span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">1</span>
+    M<span class="token punctuation">[</span>i<span class="token punctuation">,</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">=</span>D<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
+M<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">=</span>p
+R<span class="token operator">=</span>M<span class="token punctuation">.</span>LLL<span class="token punctuation">(</span><span class="token punctuation">)</span>
+LK<span class="token operator">=</span><span class="token punctuation">[</span><span class="token punctuation">]</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> R<span class="token punctuation">:</span>
+    <span class="token keyword">if</span> i<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">!=</span><span class="token number">0</span><span class="token punctuation">:</span>
+        <span class="token keyword">break</span>
+    <span class="token keyword">else</span><span class="token punctuation">:</span>
+        LK<span class="token punctuation">.</span>append<span class="token punctuation">(</span>i<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>LK<span class="token punctuation">)</span><span class="token punctuation">)</span>
+LK<span class="token operator">=</span>Matrix<span class="token punctuation">(</span>ZZ<span class="token punctuation">,</span>LK<span class="token punctuation">)</span>
+key<span class="token operator">=</span>Matrix<span class="token punctuation">(</span>ZZ<span class="token punctuation">,</span>LK<span class="token punctuation">.</span>right_kernel<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>basis<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>LLL<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
+<span class="token keyword">for</span> i <span class="token keyword">in</span> key<span class="token punctuation">:</span>
+    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">chr</span><span class="token punctuation">(</span>long_to_bytes<span class="token punctuation">(</span>ZZ<span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>end<span class="token operator">=</span><span class="token string">''</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
                 
             </div>
@@ -437,9 +537,10 @@ s=p+q</script><p>然后是一个常规格密码解背包问题，背包密度很
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2023/07/21/%E5%B7%85%E5%B3%B0%E6%9E%81%E5%AE%A22023%20Crypto%20Rosita/">
                     <div class="card-image">
@@ -457,9 +558,9 @@ s=p+q</script><p>然后是一个常规格密码解背包问题，背包密度很
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-07-21
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-21
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -472,6 +573,7 @@ s=p+q</script><p>然后是一个常规格密码解背包问题，背包密度很
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -490,24 +592,24 @@ s=p+q</script><p>然后是一个常规格密码解背包问题，背包密度很
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/06/12/SYC%E5%AE%89%E6%B4%B5%E6%9D%AF2023%20Alexei%20needs%20help%20again/">
+                <a href="/2023/06/25/CISCN%E5%8D%8E%E4%B8%AD%E8%B5%9B%E5%8C%BA%E7%BA%BF%E4%B8%8BCTF%20Crypto/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/11.jpg" class="responsive-img" alt="SYC安洵杯2023 Alexei needs help again">
+                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="CISCN华中赛区线下 Crypto">
                         
-                        <span class="card-title">SYC安洵杯2023 Alexei needs help again</span>
+                        <span class="card-title">CISCN华中赛区线下 Crypto</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            没出还是记录一下吧，作为反思
+                            华中线下
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-06-12
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-06-25
                             </span>
                         <span class="publish-author">
                             
