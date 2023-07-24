@@ -4,7 +4,7 @@
 
 <head>
     <meta charset="utf-8">
-    <meta name="keywords" content="巅峰极客2023 Crypto Rosita, lem0us">
+    <meta name="keywords" content="ImageinaryCTF 2023 Crypto, lem0us">
     <meta name="description" content="Citric acid dissolves in alcohol">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no">
@@ -16,7 +16,7 @@
     <!-- Global site tag (gtag.js) - Google Analytics -->
 
 
-    <title>巅峰极客2023 Crypto Rosita | lem0us</title>
+    <title>ImageinaryCTF 2023 Crypto | lem0us</title>
     <link rel="icon" type="image/png" href="/medias/logo.png">
 
     <link rel="stylesheet" type="text/css" href="/libs/awesome/css/all.min.css">
@@ -160,12 +160,12 @@
 
 
 
-<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/18.jpg')">
+<div class="bg-cover pd-header post-cover" style="background-image: url('/medias/featureimages/5.jpg')">
     <div class="container" style="right: 0px;left: 0px;">
         <div class="row">
             <div class="col s12 m12 l12">
                 <div class="brand">
-                    <h1 class="description center-align post-title">巅峰极客2023 Crypto Rosita</h1>
+                    <h1 class="description center-align post-title">ImageinaryCTF 2023 Crypto</h1>
                 </div>
             </div>
         </div>
@@ -306,28 +306,28 @@
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-minus fa-fw"></i>发布日期:&nbsp;&nbsp;
-                    2023-07-21
+                    2023-07-24
                 </div>
                 
 
                 
                 <div class="post-date info-break-policy">
                     <i class="far fa-calendar-check fa-fw"></i>更新日期:&nbsp;&nbsp;
-                    2023-07-21
+                    2023-07-24
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    941
+                    677
                 </div>
                 
 
                 
                 <div class="info-break-policy">
                     <i class="far fa-clock fa-fw"></i>阅读时长:&nbsp;&nbsp;
-                    4 分
+                    2 分
                 </div>
                 
 
@@ -350,134 +350,63 @@
 
         <div class="card-content article-card-content">
             <div id="articleContent">
-                <h1 id="巅峰极客2023-Crypto-Rosita"><a href="#巅峰极客2023-Crypto-Rosita" class="headerlink" title="巅峰极客2023 Crypto Rosita"></a>巅峰极客2023 Crypto Rosita</h1><p><del>偷偷更新应该没人发现吧</del></p>
-<p>浅浅的记录一下。</p>
-<p>跟强网杯2022 Lattice 这个有很大的相似之处。这个折磨我好久所以看着太熟悉了</p>
-<p>可惜我太久没做ECC，忘记了smart attack <del>可恶</del></p>
-<h2 id="题目代码"><a href="#题目代码" class="headerlink" title="题目代码"></a>题目代码</h2><pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> Crypto<span class="token punctuation">.</span>Util<span class="token punctuation">.</span>number <span class="token keyword">import</span> bytes_to_long
-<span class="token keyword">from</span> hashlib <span class="token keyword">import</span> sha256
-<span class="token keyword">from</span> os <span class="token keyword">import</span> urandom
-<span class="token comment"># from secret import p, a, b, flag</span>
-p<span class="token operator">=</span>getPrime<span class="token punctuation">(</span><span class="token number">512</span><span class="token punctuation">)</span>
-flag<span class="token operator">=</span><span class="token string">b'flag&#123;??????????????&#125;'</span>
-a<span class="token operator">=</span>randint<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span>p<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
-b<span class="token operator">=</span>randint<span class="token punctuation">(</span><span class="token number">1</span><span class="token punctuation">,</span>p<span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">)</span>
-ECC <span class="token operator">=</span> EllipticCurve<span class="token punctuation">(</span>GF<span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>a<span class="token punctuation">,</span> b<span class="token punctuation">]</span><span class="token punctuation">)</span>
-R<span class="token punctuation">,</span> E<span class="token punctuation">,</span> C <span class="token operator">=</span> <span class="token punctuation">[</span>ECC<span class="token punctuation">.</span>random_point<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token keyword">for</span> _ <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">3</span><span class="token punctuation">)</span><span class="token punctuation">]</span>
-M<span class="token operator">=</span>Matrix<span class="token punctuation">(</span>ZZ<span class="token punctuation">,</span><span class="token builtin">len</span><span class="token punctuation">(</span>flag<span class="token punctuation">)</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span>
-pad <span class="token operator">=</span> <span class="token keyword">lambda</span> m<span class="token punctuation">:</span> urandom<span class="token punctuation">(</span><span class="token number">8</span><span class="token punctuation">)</span> <span class="token operator">+</span> m <span class="token operator">+</span> <span class="token string">b'\x00'</span> <span class="token operator">*</span> <span class="token punctuation">(</span>ZZ<span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token punctuation">.</span>nbits<span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token operator">//</span> <span class="token number">8</span> <span class="token operator">-</span> <span class="token builtin">len</span><span class="token punctuation">(</span>m<span class="token punctuation">)</span> <span class="token operator">-</span> <span class="token number">8</span> <span class="token operator">-</span> <span class="token number">1</span><span class="token punctuation">)</span>
-out <span class="token operator">=</span> <span class="token builtin">list</span><span class="token punctuation">(</span><span class="token punctuation">)</span>
-<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>flag<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    m <span class="token operator">=</span> pad<span class="token punctuation">(</span><span class="token builtin">chr</span><span class="token punctuation">(</span>flag<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">.</span>encode<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span>
-    nonce <span class="token operator">=</span> urandom<span class="token punctuation">(</span><span class="token number">16</span><span class="token punctuation">)</span>
-    sh <span class="token operator">=</span> sha256<span class="token punctuation">(</span>nonce <span class="token operator">+</span> m<span class="token punctuation">)</span><span class="token punctuation">.</span>digest<span class="token punctuation">(</span><span class="token punctuation">)</span>
-    Q <span class="token operator">=</span> b2l<span class="token punctuation">(</span>m<span class="token punctuation">)</span><span class="token operator">*</span>R <span class="token operator">+</span> b2l<span class="token punctuation">(</span>nonce<span class="token punctuation">)</span><span class="token operator">*</span>E <span class="token operator">+</span> b2l<span class="token punctuation">(</span>sh<span class="token punctuation">)</span><span class="token operator">*</span>C
-    out<span class="token punctuation">.</span>append<span class="token punctuation">(</span>Q<span class="token punctuation">)</span>
-
-<span class="token keyword">with</span> <span class="token builtin">open</span><span class="token punctuation">(</span><span class="token string">'out.tuo'</span><span class="token punctuation">,</span> <span class="token string">'w'</span><span class="token punctuation">)</span> <span class="token keyword">as</span> f<span class="token punctuation">:</span>
-    f<span class="token punctuation">.</span>write<span class="token punctuation">(</span><span class="token builtin">str</span><span class="token punctuation">(</span>out<span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
-<p>简短的题目</p>
-<h2 id="题目分析"><a href="#题目分析" class="headerlink" title="题目分析"></a>题目分析</h2><p>很明显pad那部分后面全是0</p>
-<p>所以$pad(m)<em>R=m</em>2^?<em>R==m</em>R^`$</p>
-<p>转成矩阵表达咯</p>
+                <h1 id="ImageinaryCTF-2023-Crypto"><a href="#ImageinaryCTF-2023-Crypto" class="headerlink" title="ImageinaryCTF 2023 Crypto"></a>ImageinaryCTF 2023 Crypto</h1><p>出了两个中等难度</p>
+<h2 id="tan"><a href="#tan" class="headerlink" title="tan"></a>tan</h2><p>题目</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">tan<span class="token punctuation">(</span>m<span class="token punctuation">)</span><span class="token punctuation">.</span>n<span class="token punctuation">(</span><span class="token number">1024</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
+<p>还原m</p>
+<p>先用内置函数arctan还原一个初始解$\phi$</p>
+<p>周期性得</p>
 <script type="math/tex; mode=display">
-\begin{pmatrix}
-m_{0,0}&m_{0,1}&m_{0,2}\\
-\vdots&&\vdots\\
-m_{72,0}&m_{72,1}&m_{72,2}
-\end{pmatrix}\times \begin{pmatrix}R\\E\\C\end{pmatrix}=
-\begin{pmatrix}Q_1\\\vdots\\Q_{72}\end{pmatrix}</script><p>只给出了$Q_i$,还有就是M矩阵的第一列元素均为2^9*8^小bits</p>
-<p>利用smart attack把离散对数问题变成可解</p>
+m=k*\pi+\phi</script><p>满足这个关系，我一开始也是用格子解的，忘记给第一行加平衡向量了。就稍微弄的有点复杂，先把小数均扩大为整数，因为有小量误差，然后求解二元cop。也算是出了。格子还是不熟练呀，总之就是理解不到位，脚本小子当多了。</p>
+<p>贴一下格解法</p>
 <script type="math/tex; mode=display">
-\begin{pmatrix}Q_1\\\vdots\\Q_{72}\end{pmatrix}=\begin{pmatrix}d_1\\\vdots\\d_{72}\end{pmatrix}*G</script><p>$d_i$是生成元G与$Q_i$的离散对数解</p>
-<p>所以现在我们的问题换成了</p>
+M=\begin{pmatrix}1&&\\\phi&1&\\\pi&&1\end{pmatrix}\\
+\begin{pmatrix}-m&1&k\end{pmatrix}*M=(0,1,k)</script><p>第一行做平衡，相当于最大的满足等式，从而出现目标解k</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python">c <span class="token operator">=</span> <span class="token operator">-</span><span class="token number">0.7578486465144361653056740883647981074157721568235263947812770328593706155446273431983003083023944193451634501133844062222318380912228469321984711771640337084400211818130699382144693337133198331117688092846455855532799303682791981067718891947573941091671581719597626862194794682042719495503282817868258547714</span>
+c <span class="token operator">=</span> arctan<span class="token punctuation">(</span>c<span class="token punctuation">)</span>
+
+pie<span class="token operator">=</span>pi<span class="token punctuation">.</span>n<span class="token punctuation">(</span><span class="token number">1024</span><span class="token punctuation">)</span>
+
+L <span class="token operator">=</span> matrix<span class="token punctuation">(</span>QQ<span class="token punctuation">,</span> <span class="token punctuation">[</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>c<span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>pie<span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+L<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token punctuation">,</span> <span class="token number">0</span><span class="token punctuation">]</span> <span class="token operator">*=</span> <span class="token number">2</span><span class="token operator">**</span><span class="token number">1024</span>
+k<span class="token operator">=</span><span class="token builtin">int</span><span class="token punctuation">(</span>L<span class="token punctuation">.</span>LLL<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+long_to_bytes<span class="token punctuation">(</span><span class="token builtin">int</span><span class="token punctuation">(</span>k<span class="token operator">*</span>pie<span class="token operator">+</span>c<span class="token punctuation">)</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<h2 id="Wasteful"><a href="#Wasteful" class="headerlink" title="Wasteful"></a>Wasteful</h2><p>这个就比较简单，但是没有烂掉</p>
+<p>已知<script type="math/tex">e_{slow},n,c</script></p>
+<script type="math/tex; mode=display">e_{slow}=e_{fast}+A*phi\\A:683bits\\phi:2048bits\\e_{fast}:1024bits</script><p>这里很明显</p>
+<script type="math/tex; mode=display">A=e_{slow}//n+1，可以直接解出来</script><p>继续变换</p>
+<script type="math/tex; mode=display">e_{slow}//A=e_{fast}//A+n-(p+q)+1\\ n-e_{slow}//A\approx p+q-e_{fast}//A</script><p>这里<script type="math/tex">e_{fast}//A</script>相比于其他值显得很小，所以可得到p+q的近似解，通过z3求解，得到p的近似解，然后就是cop已知p高位的那一套</p>
+<p>exp也不贴了，看个解题思路就行</p>
+<h2 id="SUS"><a href="#SUS" class="headerlink" title="SUS"></a>SUS</h2><p>没出，觉得很nb，来复现一下</p>
+<p>题目</p>
+<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">def</span> <span class="token function">sus</span><span class="token punctuation">(</span>sz<span class="token punctuation">,</span> d<span class="token punctuation">)</span><span class="token punctuation">:</span>
+    <span class="token keyword">while</span> <span class="token boolean">True</span><span class="token punctuation">:</span>
+        p <span class="token operator">=</span> getPrime<span class="token punctuation">(</span>sz<span class="token punctuation">)</span>
+        pp <span class="token operator">=</span> <span class="token builtin">sum</span><span class="token punctuation">(</span><span class="token punctuation">[</span>p<span class="token operator">**</span>i <span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span>d<span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
+        <span class="token keyword">if</span> isPrime<span class="token punctuation">(</span>pp<span class="token punctuation">)</span><span class="token punctuation">:</span>
+            <span class="token keyword">return</span> p<span class="token punctuation">,</span> pp
+sus<span class="token punctuation">(</span><span class="token number">512</span><span class="token punctuation">,</span><span class="token number">3</span><span class="token punctuation">)</span>
+r<span class="token operator">=</span>getPrime<span class="token punctuation">(</span><span class="token number">512</span><span class="token operator">*</span><span class="token number">3</span><span class="token punctuation">)</span>
+n<span class="token operator">=</span>p<span class="token operator">*</span>q<span class="token operator">*</span>r<span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<p>目标分解n</p>
 <script type="math/tex; mode=display">
-\begin{pmatrix}
-m_{0,0}&m_{0,1}&m_{0,2}\\
-\vdots&&\vdots\\
-m_{72,0}&m_{72,1}&m_{72,2}
-\end{pmatrix}\times \begin{pmatrix}R\\E\\C\end{pmatrix}=\begin{pmatrix}d_1\\\vdots\\d_{72}\end{pmatrix}*G</script><script type="math/tex; mode=display">
-M=\begin{pmatrix}
-m_{0,0}&m_{0,1}&m_{0,2}\\
-\vdots&&\vdots\\
-m_{72,0}&m_{72,1}&m_{72,2}
-\end{pmatrix}\\
-D=\begin{pmatrix}d_1\\\vdots\\d_{72}\end{pmatrix}</script><h2 id="求解正交格"><a href="#求解正交格" class="headerlink" title="求解正交格"></a>求解正交格</h2><script type="math/tex; mode=display">
-假设存在一个与D正交的矩阵R=Matrix(73,73)\\
-R*D=\begin{pmatrix}0\\\vdots\\0\end{pmatrix}\\
-那么R*M=\begin{pmatrix}
-0&0&0\\
-\vdots&&\vdots\\
-0&0&0
-\end{pmatrix}</script><p>找到矩阵R，构建矩阵，<del>这里求正交格就这样造的</del></p>
+q=p^2+p+1\\
+n=p*(p^2+p+1)*r</script><p>r是p^3^一样大小，很明显这里cop什么的都用不了</p>
+<p>比赛的时候啥都想到了，包括关键的式子</p>
 <script type="math/tex; mode=display">
-\begin{pmatrix}E&D\\&p\end{pmatrix}</script><p>格基规约后,理想情况最后一列D均被规约成0</p>
+p^3-1=(p-1)*(p^2+p+1)</script><p>然后在构建一个群，它的阶为$p^3-1$这里卡住了</p>
 <script type="math/tex; mode=display">
-\begin{pmatrix}R&0\\&p\end{pmatrix}</script><p>但是不一定能把所有行都能规约成正交矩阵R。这题73行，有70行被规约成与D正交</p>
-<p>看强网杯2022 Lattice的wp这里这样满足n&gt;m/2就能通过右核矩阵还原出M。其中n是规约后正交的行数，m为给出的数据行数</p>
-<p>所以对于得到的70行足够还原出小向量。</p>
-<h2 id="还原M"><a href="#还原M" class="headerlink" title="还原M"></a>还原M</h2><script type="math/tex; mode=display">
-R*M=\begin{pmatrix}
-0&0&0\\
-\vdots&&\vdots\\
-0&0&0
-\end{pmatrix}</script><p>所以M的每一列是矩阵R的右核解，我们要求的M的第一列是R的右核格上。</p>
-<p>格基规约后的每行正交性是不变的。且M的第一列是短向量，期望对R求右核矩阵然后规约即可还原出M的第一列。</p>
-<p>exp</p>
-<pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token keyword">from</span> Crypto<span class="token punctuation">.</span>Util<span class="token punctuation">.</span>number <span class="token keyword">import</span> <span class="token operator">*</span>
-p<span class="token operator">=</span><span class="token number">11093300438765357787693823122068501933326829181518693650897090781749379503427651954028543076247583697669597230934286751428880673539155279232304301123931419</span>
-a<span class="token operator">=</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">10602337004611841904759335148883359090969653658510510358600275641050380448768874133472466281757169086931942865127222834826842856583448958195404187194601748</span><span class="token punctuation">)</span><span class="token operator">%</span>p
-b<span class="token operator">=</span><span class="token punctuation">(</span><span class="token operator">-</span><span class="token number">3424757783971572799257324035329262490411658894172572005012994558801041224262349740588482997105623017991071214586261721870544696496442896621106306121614953</span><span class="token punctuation">)</span><span class="token operator">%</span>p
-<span class="token keyword">def</span> <span class="token function">smart_attack</span><span class="token punctuation">(</span>P<span class="token punctuation">,</span> G<span class="token punctuation">,</span> p<span class="token punctuation">)</span><span class="token punctuation">:</span>
-    <span class="token comment"># https://crypto.stackexchange.com/a/70508</span>
-    E <span class="token operator">=</span> G<span class="token punctuation">.</span>curve<span class="token punctuation">(</span><span class="token punctuation">)</span>
-    Eqp <span class="token operator">=</span> EllipticCurve<span class="token punctuation">(</span>Qp<span class="token punctuation">(</span>p<span class="token punctuation">,</span> <span class="token number">2</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>ZZ<span class="token punctuation">(</span>t<span class="token punctuation">)</span> <span class="token operator">+</span> randint<span class="token punctuation">(</span><span class="token number">0</span><span class="token punctuation">,</span> p<span class="token punctuation">)</span> <span class="token operator">*</span> p <span class="token keyword">for</span> t <span class="token keyword">in</span> E<span class="token punctuation">.</span>a_invariants<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-
-    P_Qps <span class="token operator">=</span> Eqp<span class="token punctuation">.</span>lift_x<span class="token punctuation">(</span>ZZ<span class="token punctuation">(</span>G<span class="token punctuation">.</span>xy<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token builtin">all</span><span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
-    <span class="token keyword">for</span> P_Qp <span class="token keyword">in</span> P_Qps<span class="token punctuation">:</span>
-        <span class="token keyword">if</span> GF<span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token punctuation">(</span>P_Qp<span class="token punctuation">.</span>xy<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">==</span> G<span class="token punctuation">.</span>xy<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
-            <span class="token keyword">break</span>
-
-    Q_Qps <span class="token operator">=</span> Eqp<span class="token punctuation">.</span>lift_x<span class="token punctuation">(</span>ZZ<span class="token punctuation">(</span>P<span class="token punctuation">.</span>xy<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token builtin">all</span><span class="token operator">=</span><span class="token boolean">True</span><span class="token punctuation">)</span>
-    <span class="token keyword">for</span> Q_Qp <span class="token keyword">in</span> Q_Qps<span class="token punctuation">:</span>
-        <span class="token keyword">if</span> GF<span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token punctuation">(</span>Q_Qp<span class="token punctuation">.</span>xy<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token operator">==</span> P<span class="token punctuation">.</span>xy<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">:</span>
-            <span class="token keyword">break</span>
-
-    p_times_P <span class="token operator">=</span> p <span class="token operator">*</span> P_Qp
-    p_times_Q <span class="token operator">=</span> p <span class="token operator">*</span> Q_Qp
-
-    x_P<span class="token punctuation">,</span> y_P <span class="token operator">=</span> p_times_P<span class="token punctuation">.</span>xy<span class="token punctuation">(</span><span class="token punctuation">)</span>
-    x_Q<span class="token punctuation">,</span> y_Q <span class="token operator">=</span> p_times_Q<span class="token punctuation">.</span>xy<span class="token punctuation">(</span><span class="token punctuation">)</span>
-
-    phi_P <span class="token operator">=</span> <span class="token operator">-</span><span class="token punctuation">(</span>x_P <span class="token operator">/</span> y_P<span class="token punctuation">)</span>
-    phi_Q <span class="token operator">=</span> <span class="token operator">-</span><span class="token punctuation">(</span>x_Q <span class="token operator">/</span> y_Q<span class="token punctuation">)</span>
-    k <span class="token operator">=</span> phi_Q <span class="token operator">/</span> phi_P
-    <span class="token keyword">return</span> ZZ<span class="token punctuation">(</span>k<span class="token punctuation">)</span>
-E <span class="token operator">=</span> EllipticCurve<span class="token punctuation">(</span>GF<span class="token punctuation">(</span>p<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token punctuation">[</span>a<span class="token punctuation">,</span> b<span class="token punctuation">]</span><span class="token punctuation">)</span>
-D<span class="token operator">=</span><span class="token punctuation">[</span><span class="token punctuation">]</span>
-G<span class="token operator">=</span>E<span class="token punctuation">.</span>gens<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
-<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>res<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    temp_Q<span class="token operator">=</span>E<span class="token punctuation">(</span>res<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span><span class="token punctuation">,</span>res<span class="token punctuation">[</span>i<span class="token punctuation">]</span><span class="token punctuation">[</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-    D<span class="token punctuation">.</span>append<span class="token punctuation">(</span>smart_attack<span class="token punctuation">(</span>temp_Q<span class="token punctuation">,</span>G<span class="token punctuation">,</span>p<span class="token punctuation">)</span><span class="token punctuation">)</span>
-<span class="token comment">#有亿点点久</span>
-
-M<span class="token operator">=</span>Matrix<span class="token punctuation">(</span>ZZ<span class="token punctuation">,</span><span class="token number">74</span><span class="token punctuation">,</span><span class="token number">74</span><span class="token punctuation">)</span>
-<span class="token keyword">for</span> i <span class="token keyword">in</span> <span class="token builtin">range</span><span class="token punctuation">(</span><span class="token number">73</span><span class="token punctuation">)</span><span class="token punctuation">:</span>
-    M<span class="token punctuation">[</span>i<span class="token punctuation">,</span>i<span class="token punctuation">]</span><span class="token operator">=</span><span class="token number">1</span>
-    M<span class="token punctuation">[</span>i<span class="token punctuation">,</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">=</span>D<span class="token punctuation">[</span>i<span class="token punctuation">]</span>
-M<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">,</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">=</span>p
-R<span class="token operator">=</span>M<span class="token punctuation">.</span>LLL<span class="token punctuation">(</span><span class="token punctuation">)</span>
-LK<span class="token operator">=</span><span class="token punctuation">[</span><span class="token punctuation">]</span>
-<span class="token keyword">for</span> i <span class="token keyword">in</span> R<span class="token punctuation">:</span>
-    <span class="token keyword">if</span> i<span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token operator">!=</span><span class="token number">0</span><span class="token punctuation">:</span>
-        <span class="token keyword">break</span>
-    <span class="token keyword">else</span><span class="token punctuation">:</span>
-        LK<span class="token punctuation">.</span>append<span class="token punctuation">(</span>i<span class="token punctuation">[</span><span class="token punctuation">:</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span>
-<span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">len</span><span class="token punctuation">(</span>LK<span class="token punctuation">)</span><span class="token punctuation">)</span>
-LK<span class="token operator">=</span>Matrix<span class="token punctuation">(</span>ZZ<span class="token punctuation">,</span>LK<span class="token punctuation">)</span>
-key<span class="token operator">=</span>Matrix<span class="token punctuation">(</span>ZZ<span class="token punctuation">,</span>LK<span class="token punctuation">.</span>right_kernel<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">.</span>basis<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">.</span>LLL<span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token number">0</span><span class="token punctuation">]</span>
-<span class="token keyword">for</span> i <span class="token keyword">in</span> key<span class="token punctuation">:</span>
-    <span class="token keyword">print</span><span class="token punctuation">(</span><span class="token builtin">chr</span><span class="token punctuation">(</span>long_to_bytes<span class="token punctuation">(</span>ZZ<span class="token punctuation">(</span>i<span class="token punctuation">)</span><span class="token punctuation">)</span><span class="token punctuation">[</span><span class="token operator">-</span><span class="token number">1</span><span class="token punctuation">]</span><span class="token punctuation">)</span><span class="token punctuation">,</span>end<span class="token operator">=</span><span class="token string">''</span><span class="token punctuation">)</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+假设群G的阶为(p^3-1)\\
+q=g^n=g^{p*(p^2+p+1)*r}\\
+q的阶为p-1，后续总有利用点</script><p>看了wp，突然就想到了，degree为3的多项式商环的阶不就是p^3-1</p>
+<p>狠狠学习</p>
+<p>有了这个，求解思路就很清晰了</p>
+<script type="math/tex; mode=display">
+f(x)=x^3+a*x^2+b*x+c\\
+\mathbb{R}=\mathbb{Z}_n[x]/f(x)\\
+\mathbb{K}=\mathbb{F}_p[x]/f(x)</script><p>随机生成多项式f(x)，多项式环K的阶即为（p^3-1）。</p>
+<p>对于环K上的任意元素a,a^n^ 的order为p-1，所以a^n^系数为(u,0,0)这样的形式。</p>
+<p>所以对环R上的任意元素经过n次方操作后的一次项或者二次项的系数gcd一下就得到n</p>
 
                 
             </div>
@@ -537,9 +466,10 @@ key<span class="token operator">=</span>Matrix<span class="token punctuation">(<
 <article id="prenext-posts" class="prev-next articles">
     <div class="row article-row">
         
-        <div class="article col s12 m6" data-aos="fade-up">
+        <div class="article col s12 m6" data-aos="fade-up" data-aos="fade-up">
             <div class="article-badge left-badge text-color">
-                <i class="fas fa-chevron-left"></i>&nbsp;上一篇</div>
+                <i class="far fa-dot-circle"></i>&nbsp;本篇
+            </div>
             <div class="card">
                 <a href="/2023/07/24/ImageinaryCTF%202023%20Crypto/">
                     <div class="card-image">
@@ -557,9 +487,9 @@ key<span class="token operator">=</span>Matrix<span class="token punctuation">(<
                         
                     </div>
                     <div class="publish-info">
-                        <span class="publish-date">
-                            <i class="far fa-clock fa-fw icon-date"></i>2023-07-24
-                        </span>
+                            <span class="publish-date">
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-24
+                            </span>
                         <span class="publish-author">
                             
                             <i class="fas fa-bookmark fa-fw icon-category"></i>
@@ -572,6 +502,7 @@ key<span class="token operator">=</span>Matrix<span class="token punctuation">(<
                         </span>
                     </div>
                 </div>
+
                 
                 <div class="card-action article-tags">
                     
@@ -590,24 +521,24 @@ key<span class="token operator">=</span>Matrix<span class="token punctuation">(<
                 下一篇&nbsp;<i class="fas fa-chevron-right"></i>
             </div>
             <div class="card">
-                <a href="/2023/06/25/CISCN%E5%8D%8E%E4%B8%AD%E8%B5%9B%E5%8C%BA%E7%BA%BF%E4%B8%8BCTF%20Crypto/">
+                <a href="/2023/07/21/%E5%B7%85%E5%B3%B0%E6%9E%81%E5%AE%A22023%20Crypto%20Rosita/">
                     <div class="card-image">
                         
                         
-                        <img src="/medias/featureimages/8.jpg" class="responsive-img" alt="CISCN华中赛区线下 Crypto">
+                        <img src="/medias/featureimages/18.jpg" class="responsive-img" alt="巅峰极客2023 Crypto Rosita">
                         
-                        <span class="card-title">CISCN华中赛区线下 Crypto</span>
+                        <span class="card-title">巅峰极客2023 Crypto Rosita</span>
                     </div>
                 </a>
                 <div class="card-content article-content">
                     <div class="summary block-with-text">
                         
-                            华中线下
+                            越学越菜呀
                         
                     </div>
                     <div class="publish-info">
                             <span class="publish-date">
-                                <i class="far fa-clock fa-fw icon-date"></i>2023-06-25
+                                <i class="far fa-clock fa-fw icon-date"></i>2023-07-21
                             </span>
                         <span class="publish-author">
                             
