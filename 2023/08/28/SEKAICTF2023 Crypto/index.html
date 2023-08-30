@@ -352,7 +352,7 @@
             <div id="articleContent">
                 <h1 id="SEKAICTF2023-Crypto"><a href="#SEKAICTF2023-Crypto" class="headerlink" title="SEKAICTF2023 Crypto"></a>SEKAICTF2023 Crypto</h1><p>我刚学密码时，做个SEKAI2022，一个都不会，今年刚好这个比赛又开了，想看看能做几个。题目质量都是没得说的</p>
 <p>也是做了下前四题，在noisier CRC卡住了就没往下做了。</p>
-<p><img src='C:\Users\孔浩然\Desktop\wp of cry\img\image-20230828090225255.png' style='height:400px;width:500px'></p>
+<p><img src='https://raw.githubusercontent.com/zarismine/CTF_challenge_and_wp/main/image-20230828090225255.png' style='height:400px;width:500px'></p>
 <h2 id="cryptoGRAPHy"><a href="#cryptoGRAPHy" class="headerlink" title="cryptoGRAPHy"></a>cryptoGRAPHy</h2><p>代码有点长，是实现了对图的最短路径的加密程序。</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token triple-quoted-string string">'''
 G has nodes (1,5),and the shortert path is [1,3,4,5]:
@@ -372,7 +372,7 @@ by search(Token(u,v),enc_db) return the SP
 <h3 id="2"><a href="#2" class="headerlink" title="2"></a>2</h3><p>问题：给定目的节点（dest），可以获取nodes次路径加密结果，dest为根节点的树，其他节点均在树上，树的边为最短路径。求出这颗最短路径树的每个节点的度。无需精确到每个节点，只需要一个结果</p>
 <p>分析：很显然这里nodes次路径加密要获取每个节点到目的节点的路径加密结果。</p>
 <p>这里考虑路径的复用次数和度的关系</p>
-<p><img src='C:\Users\孔浩然\AppData\Roaming\Typora\typora-user-images\image-20230828095030367.png' style='height:300px'></p>
+<p><img src='https://raw.githubusercontent.com/zarismine/CTF_challenge_and_wp/main/image-20230828095030367.png' style='height:300px'></p>
 <p><strong>SPDX[Token(1,5)]=Token(3,5)+Token(4,5)+Token(5,5)+E(3,5)+E(4,5)+E(5,5)</strong></p>
 <p>看本题开始的分析，不难发现，保留了路径长度信息以及除去首节点的最短路径</p>
 <p>SPDX[(8,0)]=SPDX[(7,0)]，SPDX[(4,0)]=SPDX[(3,0)]</p>
@@ -387,12 +387,12 @@ by search(Token(u,v),enc_db) return the SP
 <p>我的思路是</p>
 <p>先对树的每个节点为dest的最短路径结果进行一个数据统计，计算出以该节点为目的节点的路径复用次数</p>
 <p>对加密结果进行分段匹配，得到目标最短路径倒数第n步的复用次数</p>
-<p><img src='C:\Users\孔浩然\AppData\Roaming\Typora\typora-user-images\image-20230828095030367.png' style='height:300px'></p>
+<p><img src='https://raw.githubusercontent.com/zarismine/CTF_challenge_and_wp/main/image-20230828095030367.png' style='height:300px'></p>
 <p>还是以此图进行简单的思路证明</p>
 <p>假设选取（5，4），已知为Token(5,4),Token(2,4)+Token(0,4)+Token(1,4)+Token(4,4)</p>
 <p>通过已知的树可以算出其他所有节点到4的最短路径，并表达成(start, root), (next_vertex, root)的题目形式</p>
 <p>对这些路径进行加密结果中Token(4,4)出现nodes-1=8次，Token(1,4)，Token(0,4)等出现的次数都可计算。以此来做个匹配</p>
-<p><img src="C:\Users\孔浩然\AppData\Roaming\Typora\typora-user-images\image-20230828102337068.png" alt="image-20230828102337068"></p>
+<p><img src="https://github.com/zarismine/CTF_challenge_and_wp/blob/main/image-20230828102337068.png?raw=true" alt="image-20230828102337068"></p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python"><span class="token comment">#'(0, 0),0': 59,以（0，0）为最短路径的最后一段的次数为59</span><span aria-hidden="true" class="line-numbers-rows"><span></span></span></code></pre>
 <p>我们获取到加密结果数量统计后</p>
 <pre class="line-numbers language-python" data-language="python"><code class="language-python">ans<span class="token operator">=</span><span class="token punctuation">[</span><span class="token number">59</span><span class="token punctuation">,</span> <span class="token number">35</span><span class="token punctuation">,</span> <span class="token number">27</span><span class="token punctuation">,</span> <span class="token number">7</span><span class="token punctuation">,</span> <span class="token number">6</span><span class="token punctuation">,</span> <span class="token number">5</span><span class="token punctuation">,</span> <span class="token number">4</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">]</span>
